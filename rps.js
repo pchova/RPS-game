@@ -46,10 +46,16 @@ function playRound(userChoice, computerChoice) {
     }
 }
 
-const userChoice = "ROCK";
-const computerChoice = getComputerChoice();
-console.log(playRound(userChoice, computerChoice));
+function playGame() {
+    for(let i = 0; i < 5; i++) {
+        const userChoice = getUserChoice();
+        const computerChoice = getComputerChoice();
 
-const userChoice2 = "Paper";
-const computerChoice2 = getComputerChoice();
-console.log(playRound(userChoice2, computerChoice2));
+        console.log("Round " + parseInt(i + 1));
+        console.log("User Choice: " + userChoice);
+        console.log("Computer Choice: " + computerChoice);
+        console.log(playRound(userChoice, computerChoice));
+    }
+}
+
+console.log(playGame());
