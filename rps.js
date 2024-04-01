@@ -4,43 +4,44 @@ function getComputerChoice() {
 
     return options[choice];
 }
-
 //console.log(getComputerChoice());
 
+function getUserChoice() {
+    let choice = prompt("To play, type rock, paper, or scissors: ");
+    return choice.toLowerCase();
+}
     
 function playRound(userChoice, computerChoice) {
-    let user = userChoice.toLowerCase();
-    let computer = computerChoice.toLowerCase();
+    let user = userChoice
+    let computer = computerChoice
 
-    console.log("User\'s Choice: " + user);
-    console.log("Computer\'s Choice: " + computer + "\n");
     if (user == 'rock') {
         if (computer == 'paper') {
-        console.log('Computer wins.');
+            return 'Computer wins.';
         }else if (computer == 'scissors') {
         console.log('User wins.');
         }else {
-        console.log('Tie!');
+            return 'Tie!';
         }
     }
     
     if (user == 'paper') {
         if (computer == 'rock') {
-        console.log('User wins.');
+            return 'User wins.';
         }else if (computer == 'scissors') {
-        console.log('Computer wins.');
+            return 'Computer wins.';
         }else {
-        console.log('Tie!');
+            return 'Tie!';
         }
     }
     
     if (user == 'scissors') {
         if (computer == 'rock') {
-        console.log('Computer wins.');
+            return 'Computer wins.';
         }else if (computer == 'paper') {
-        console.log('User wins.');
+            return 'User wins.';
         }else {
-        console.log('Tie!');
+            return 'Tie!';
         }
     }
 }
