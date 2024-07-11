@@ -6,18 +6,27 @@ let tieCount = 0;
 /*USER BUTTONS ON PAGE */
 const title = document.createElement('h2');
 title.textContent = "To play, click rock, paper, or scissors!";
+title.style.cssText = "color: hotpink; font-size: 30px;";
+
 const rock = document.createElement('button');
-rock.textContent = "rock";
+rock.textContent = "ROCK";
+rock.setAttribute("style", "padding: 10px; margin: 10px; background-color: lightblue;");
+
 const paper = document.createElement('button');
-paper.textContent = "paper";
+paper.textContent = "PAPER";
+paper.setAttribute("style", "padding: 10px; margin: 10px; background-color: lightblue");
+
 const scissors = document.createElement('button');
-scissors.textContent = "scissors";
+scissors.textContent = "SCISSORS";
+scissors.setAttribute("style", "padding: 10px; margin: 10px; background-color: lightblue");
 
 const buttonContainer = document.querySelector('#choices');
 buttonContainer.appendChild(title);
 buttonContainer.appendChild(rock);
 buttonContainer.appendChild(paper);
 buttonContainer.appendChild(scissors);
+
+const resultsContainer = document.querySelector('#results');
 
 rock.addEventListener("click", playRound);
 paper.addEventListener("click", playRound);
@@ -41,7 +50,7 @@ function getUserChoice() {
 }
 
 function playRound(e) {
-    let user = e.target.textContent;
+    let user = e.target.textContent.toLowerCase();
 
     let computer = getComputerChoice();
 
@@ -112,11 +121,6 @@ function playGame() {
         console.log("Computer Choice: " + computerChoice);
         console.log(playRound(userChoice, computerChoice));
     }
-
-
-    console.log("\n");
-    console.log("---------------Results---------------");
-    console.log("User Count: " + userCount + ", Computer Count: " + compCount + ", Tie: " + tieCount);
 
     if (userCount > compCount) {
         console.log("The user wins!!");
