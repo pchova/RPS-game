@@ -27,6 +27,7 @@ buttonContainer.appendChild(paper);
 buttonContainer.appendChild(scissors);
 
 const resultsContainer = document.querySelector('#results');
+resultsContainer.textContent = '\n---------------Results---------------\n';
 
 rock.addEventListener("click", playRound);
 paper.addEventListener("click", playRound);
@@ -50,68 +51,79 @@ function getUserChoice() {
 }
 
 function playRound(e) {
+
     let user = e.target.textContent.toLowerCase();
 
     let computer = getComputerChoice();
 
+    const playRoundResults = document.createElement('div');
+    const countResults = document.createElement('div');
+
     if (user == 'rock') {
         if (computer == 'paper') {
-            compCount++;
-            console.log('Computer wins.');
+            ++compCount;
+            playRoundResults.textContent = 'Computer wins. ';
+            countResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
+             compCount + ', Tie: ' + tieCount;
         }else if (computer == 'scissors') {
-            userCount++;
-            console.log('User wins.');
+            ++userCount;
+            playRoundResults.textContent = 'User wins.';
+            countResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
+             compCount + ', Tie: ' + tieCount;
         }else {
-            tieCount++;
-            console.log('Tie!');
+            ++tieCount;
+            playRoundResults.textContent = 'Tie!';
+            countResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
+             compCount + ', Tie: ' + tieCount;
         }
     }
     
     if (user == 'paper') {
         if (computer == 'rock') {
-            userCount++;
-            console.log('User wins.');
+            ++userCount;
+            playRoundResults.textContent = 'User wins.';
+            countResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
+             compCount + ', Tie: ' + tieCount;
         }else if (computer == 'scissors') {
-            compCount++;
-            console.log('Computer wins.');
+            ++compCount;
+            playRoundResults.textContent = 'Computer wins.';
+            countResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
+             compCount + ', Tie: ' + tieCount;
         }else {
-            tieCount++;
-            console.log('Tie!');
+            ++tieCount;
+            playRoundResults.textContent = 'Tie!';
+            countResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
+             compCount + ', Tie: ' + tieCount;
         }
     }
     
     if (user == 'scissors') {
         if (computer == 'rock') {
-            compCount++;
-            console.log('Computer wins.');
+            ++compCount;
+            playRoundResults.textContent = 'Computer wins.';
+            countResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
+             compCount + ', Tie: ' + tieCount;
         }else if (computer == 'paper') {
-            userCount++;
-            console.log('User wins.');
+            ++userCount;
+            playRoundResults.textContent = 'User wins.';
+            countResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
+             compCount + ', Tie: ' + tieCount;
         }else {
-            tieCount++;
-            console.log('Tie!');
+            ++tieCount;
+            playRoundResults.textContent = 'Tie!';
+            countResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
+             compCount + ', Tie: ' + tieCount;
+            
         }
     }
 
-    console.log("\n");
-    console.log("---------------Results---------------");
-    console.log("User Count: " + userCount + ", Computer Count: " + compCount + ", Tie: " + tieCount);
-    console.log("\n");
+    resultsContainer.appendChild(playRoundResults);
+    resultsContainer.appendChild(countResults);
 }
 
 
-
-
-
-
-
-
-
-
-
-
-/* 
 function playGame() {
+    /*
     for(let i = 0; i < 5; i++) {
         const userChoice = getUserChoice();
         const computerChoice = getComputerChoice();
@@ -131,8 +143,6 @@ function playGame() {
     }else {
         console.log("Nobody wins.");
     }
+    */
 }
-
-playGame(); 
- */
 
