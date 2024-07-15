@@ -3,22 +3,25 @@ let userCount = 0;
 let compCount = 0;
 let tieCount = 0;
 
+let computerChoice = getComputerChoice();
+let userChoice;
+
 /*USER BUTTONS ON PAGE */
 const title = document.createElement('h2');
-title.textContent = "To play, click rock, paper, or scissors!";
+title.textContent = "Click Rock, Paper, or Scissors to play!";
 title.style.cssText = "color: hotpink; font-size: 30px;";
 
 const rock = document.createElement('button');
 rock.textContent = "ROCK";
-rock.setAttribute("style", "padding: 10px; margin: 10px; background-color: lightblue;");
+rock.setAttribute("style", "padding: 10px; margin: 10px; background-color: pink; border: 3px solid hotpink; border-radius: 10px");
 
 const paper = document.createElement('button');
 paper.textContent = "PAPER";
-paper.setAttribute("style", "padding: 10px; margin: 10px; background-color: lightblue");
+paper.setAttribute("style", "padding: 10px; margin: 10px; background-color: pink; border: 3px solid hotpink; border-radius: 10px");
 
 const scissors = document.createElement('button');
 scissors.textContent = "SCISSORS";
-scissors.setAttribute("style", "padding: 10px; margin: 10px; background-color: lightblue");
+scissors.setAttribute("style", "padding: 10px; margin: 10px; background-color: pink; border: 3px solid hotpink; border-radius: 10px");
 
 const buttonContainer = document.querySelector('#choices');
 buttonContainer.appendChild(title);
@@ -27,14 +30,22 @@ buttonContainer.appendChild(paper);
 buttonContainer.appendChild(scissors);
 
 const resultsContainer = document.querySelector('#results');
-resultsContainer.textContent = '\n---------------Results---------------\n';
 
-rock.addEventListener("click", playRound);
-paper.addEventListener("click", playRound);
-scissors.addEventListener("click", playRound);
+rock.addEventListener("click", () => {
+    playRound(userChoice = "rock", computerChoice);
+});
+
+paper.addEventListener("click", () => {
+    playRound(userChoice = "paper", computerChoice);
+});
+
+scissors.addEventListener("click", () => {
+    playRound(userChoice = "scissors", computerChoice);
+}); 
 
 
 /*METHODS TO PLAY */
+
 function getComputerChoice() {
     let options = ['rock', 'paper', 'scissors'];
     let choice = Math.floor(Math.random() * options.length);
@@ -42,107 +53,104 @@ function getComputerChoice() {
     return options[choice];
 }
 
-function getUserChoice() {
-    /* ---- getUserChoice() function before creating the UI with JS -----
+function playRound(userChoice, computerChoice) {
 
-    let choice = alert("To play, click rock, paper, or scissors.");
-    return choice.toLowerCase();
-    */
-}
-
-function playRound(e) {
-
-    let user = e.target.textContent.toLowerCase();
-
-    let computer = getComputerChoice();
+    let user = userChoice;
+    let computer = computerChoice;
+    let i = 0;
 
     const playRoundResults = document.createElement('div');
-    const countResults = document.createElement('div');
 
     if (user == 'rock') {
         if (computer == 'paper') {
-            ++compCount;
-            playRoundResults.textContent = 'Computer wins. ';
-            countResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
-             compCount + ', Tie: ' + tieCount;
+            compCount++;
+            resultsContainer.textContent = 'Computer wins. ';
+            playRoundResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
+            compCount + ', Tie: ' + tieCount;
         }else if (computer == 'scissors') {
-            ++userCount;
-            playRoundResults.textContent = 'User wins.';
-            countResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
-             compCount + ', Tie: ' + tieCount;
+            userCount++;
+            resultsContainer.textContent = 'User wins.';
+            playRoundResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
+            compCount + ', Tie: ' + tieCount;
         }else {
-            ++tieCount;
-            playRoundResults.textContent = 'Tie!';
-            countResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
-             compCount + ', Tie: ' + tieCount;
+            tieCount++;
+            resultsContainer.textContent = 'Tie!';
+            playRoundResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
+            compCount + ', Tie: ' + tieCount;
         }
     }
     
     if (user == 'paper') {
         if (computer == 'rock') {
-            ++userCount;
-            playRoundResults.textContent = 'User wins.';
-            countResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
-             compCount + ', Tie: ' + tieCount;
+            userCount++;
+            resultsContainer.textContent = 'User wins.';
+            playRoundResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
+            compCount + ', Tie: ' + tieCount;
         }else if (computer == 'scissors') {
-            ++compCount;
-            playRoundResults.textContent = 'Computer wins.';
-            countResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
-             compCount + ', Tie: ' + tieCount;
+            compCount++;
+            resultsContainer.textContent = 'Computer wins.';
+            playRoundResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
+            compCount + ', Tie: ' + tieCount;
         }else {
-            ++tieCount;
-            playRoundResults.textContent = 'Tie!';
-            countResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
-             compCount + ', Tie: ' + tieCount;
+            tieCount++;
+            resultsContainer.textContent = 'Tie!';
+            playRoundResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
+            compCount + ', Tie: ' + tieCount;
         }
     }
     
     if (user == 'scissors') {
         if (computer == 'rock') {
-            ++compCount;
-            playRoundResults.textContent = 'Computer wins.';
-            countResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
-             compCount + ', Tie: ' + tieCount;
+            compCount++;
+            resultsContainer.textContent = 'Computer wins.';
+            playRoundResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
+            compCount + ', Tie: ' + tieCount;
         }else if (computer == 'paper') {
-            ++userCount;
-            playRoundResults.textContent = 'User wins.';
-            countResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
-             compCount + ', Tie: ' + tieCount;
+            userCount++;
+            resultsContainer.textContent = 'User wins.';
+            playRoundResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
+            compCount + ', Tie: ' + tieCount;
         }else {
-            ++tieCount;
-            playRoundResults.textContent = 'Tie!';
-            countResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
-             compCount + ', Tie: ' + tieCount;
-            
+            tieCount++;
+            resultsContainer.textContent = 'Tie!';
+            playRoundResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
+            compCount + ', Tie: ' + tieCount;
         }
     }
 
     resultsContainer.appendChild(playRoundResults);
-    resultsContainer.appendChild(countResults);
 }
+
+
+
+//new direction of how to program this:
+//delete playGame() and create newGame() function
+//keep score in event listener and end once someone hits 5 points
+//new game restarts score to 0
 
 
 function playGame() {
-    /*
+    
     for(let i = 0; i < 5; i++) {
-        const userChoice = getUserChoice();
-        const computerChoice = getComputerChoice();
+        //console.log("User Choice: " + userChoice);
+        //console.log("Computer Choice: " + computerChoice);
+        //console.log(playRound(userChoice, computerChoice));
 
         console.log("Round " + parseInt(i + 1));
-        console.log("User Choice: " + userChoice);
-        console.log("Computer Choice: " + computerChoice);
-        console.log(playRound(userChoice, computerChoice));
+
+        if (userCount > compCount) {
+            console.log("The user wins!!");
+        } else if ( userCount < compCount) {
+            console.log("The computer wins!!");
+        }else if (userCount == compCount) {
+            console.log("It\s a tie!");
+        }else {
+            console.log("Nobody wins.");
+        }
+
     }
 
-    if (userCount > compCount) {
-        console.log("The user wins!!");
-    } else if ( userCount < compCount) {
-        console.log("The computer wins!!");
-    }else if (userCount == compCount) {
-        console.log("It\s a tie!");
-    }else {
-        console.log("Nobody wins.");
-    }
-    */
 }
+
+//playGame();
 
