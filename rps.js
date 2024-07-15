@@ -1,4 +1,4 @@
-/* VARIABLES */
+/* GAME VARIABLES */
 let userCount = 0;
 let compCount = 0;
 let tieCount = 0;
@@ -6,7 +6,8 @@ let tieCount = 0;
 let computerChoice = getComputerChoice();
 let userChoice;
 
-/*USER BUTTONS ON PAGE */
+
+/* USER BUTTONS + ELEMENTS ON PAGE */
 const title = document.createElement('h2');
 title.textContent = "Click Rock, Paper, or Scissors to play!";
 title.style.cssText = "color: hotpink; font-size: 30px;";
@@ -30,22 +31,63 @@ buttonContainer.appendChild(paper);
 buttonContainer.appendChild(scissors);
 
 const resultsContainer = document.querySelector('#results');
+const endGameResults = document.createElement('div');
 
+
+/* RPS BUTTON EVENT LISTENERS */
 rock.addEventListener("click", () => {
-    playRound(userChoice = "rock", computerChoice);
+    if(userCount < 5 && compCount < 5) {
+        playRound(userChoice = "rock", computerChoice);
+    } else {
+        if (userCount > compCount) {
+            endGameResults.textContent = "The user wins!!";
+        } else if ( userCount < compCount) {
+            endGameResults.textContent = "The computer wins!!";
+        }else if (userCount == compCount) {
+            endGameResults.textContent = "It\s a tie!";
+        }else {
+            endGameResults.textContent = "Nobody wins.";
+        }
+    }
+    resultsContainer.appendChild(endGameResults);
 });
 
 paper.addEventListener("click", () => {
-    playRound(userChoice = "paper", computerChoice);
+    if(userCount < 5 && compCount < 5) {
+        playRound(userChoice = "paper", computerChoice);
+    } else {
+        if (userCount > compCount) {
+            endGameResults.textContent = "The user wins!!";
+        } else if ( userCount < compCount) {
+            endGameResults.textContent = "The computer wins!!";
+        }else if (userCount == compCount) {
+            endGameResults.textContent = "It\s a tie!";
+        }else {
+            endGameResults.textContent = "Nobody wins.";
+        }
+    }
+    resultsContainer.appendChild(endGameResults);
 });
 
 scissors.addEventListener("click", () => {
-    playRound(userChoice = "scissors", computerChoice);
+    if(userCount < 5 && compCount < 5) {
+        playRound(userChoice = "scissors", computerChoice);
+    } else {
+        if (userCount > compCount) {
+            endGameResults.textContent = "The user wins!!";
+        } else if ( userCount < compCount) {
+            endGameResults.textContent = "The computer wins!!";
+        }else if (userCount == compCount) {
+            endGameResults.textContent = "It\s a tie!";
+        }else {
+            endGameResults.textContent = "Nobody wins.";
+        }
+    }
+    resultsContainer.appendChild(endGameResults);
 }); 
 
 
-/*METHODS TO PLAY */
-
+/* FUNCTIONS TO PLAY */
 function getComputerChoice() {
     let options = ['rock', 'paper', 'scissors'];
     let choice = Math.floor(Math.random() * options.length);
@@ -122,35 +164,9 @@ function playRound(userChoice, computerChoice) {
 }
 
 
-
 //new direction of how to program this:
 //delete playGame() and create newGame() function
 //keep score in event listener and end once someone hits 5 points
-//new game restarts score to 0
+//new game restarts score to 0 and there is a button for new game
 
-
-function playGame() {
-    
-    for(let i = 0; i < 5; i++) {
-        //console.log("User Choice: " + userChoice);
-        //console.log("Computer Choice: " + computerChoice);
-        //console.log(playRound(userChoice, computerChoice));
-
-        console.log("Round " + parseInt(i + 1));
-
-        if (userCount > compCount) {
-            console.log("The user wins!!");
-        } else if ( userCount < compCount) {
-            console.log("The computer wins!!");
-        }else if (userCount == compCount) {
-            console.log("It\s a tie!");
-        }else {
-            console.log("Nobody wins.");
-        }
-
-    }
-
-}
-
-//playGame();
-
+function newGame() {}
