@@ -6,6 +6,7 @@ let tieCount = 0;
 let computerChoice = getComputerChoice();
 let userChoice;
 
+let rounds = 10;
 
 /* USER BUTTONS + ELEMENTS ON PAGE */
 const title = document.createElement('h2');
@@ -43,16 +44,16 @@ const endGameResults = document.createElement('div');
 newGamebtn.addEventListener("click", newGame);
 
 rock.addEventListener("click", () => {
-    if(userCount < 5 && compCount < 5) {
+    if(userCount < rounds && compCount < rounds) {
         playRound(userChoice = "rock", computerChoice);
     }
-    if (userCount == 5 || compCount == 5) {
+    if (userCount == rounds || compCount == rounds) {
         if (userCount > compCount) {
             endGameResults.textContent = "The user wins!!";
         } else if ( userCount < compCount) {
             endGameResults.textContent = "The computer wins!!";
         }else if (userCount == compCount) {
-            endGameResults.textContent = "It\s a tie!";
+            endGameResults.textContent = "It\'s a tie!";
         }else {
             endGameResults.textContent = "Nobody wins.";
         }
@@ -61,16 +62,16 @@ rock.addEventListener("click", () => {
 });
 
 paper.addEventListener("click", () => {
-    if(userCount < 5 && compCount < 5) {
+    if(userCount < rounds && compCount < rounds) {
         playRound(userChoice = "paper", computerChoice);
     }
-    if (userCount == 5 || compCount == 5) {
+    if (userCount == rounds || compCount == rounds) {
         if (userCount > compCount) {
             endGameResults.textContent = "The user wins!!";
         } else if ( userCount < compCount) {
             endGameResults.textContent = "The computer wins!!";
         }else if (userCount == compCount) {
-            endGameResults.textContent = "It\s a tie!";
+            endGameResults.textContent = "It\'s a tie!";
         }else {
             endGameResults.textContent = "Nobody wins.";
         }
@@ -79,16 +80,16 @@ paper.addEventListener("click", () => {
 });
 
 scissors.addEventListener("click", () => {
-    if(userCount < 5 && compCount < 5) {
+    if(userCount < rounds && compCount < rounds) {
         playRound(userChoice = "scissors", computerChoice);
     }
-    if (userCount == 5 || compCount == 5) {
+    if (userCount == rounds || compCount == rounds) {
         if (userCount > compCount) {
             endGameResults.textContent = "The user wins!!";
         } else if ( userCount < compCount) {
             endGameResults.textContent = "The computer wins!!";
         }else if (userCount == compCount) {
-            endGameResults.textContent = "It\s a tie!";
+            endGameResults.textContent = "It\'s a tie!";
         }else {
             endGameResults.textContent = "Nobody wins.";
         }
@@ -109,7 +110,6 @@ function playRound(userChoice, computerChoice) {
 
     let user = userChoice;
     let computer = computerChoice;
-    let i = 0;
 
     if (user == 'rock') {
         if (computer == 'paper') {
@@ -171,9 +171,6 @@ function playRound(userChoice, computerChoice) {
     resultsContainer.appendChild(playRoundResults);
 }
 
-
-//new direction of how to program this:
-
 function newGame() {
     userCount = 0;
     compCount = 0;
@@ -181,6 +178,6 @@ function newGame() {
 
     resultsContainer.removeChild(playRoundResults);
     resultsContainer.removeChild(endGameResults);
-    resultsContainer.textContent = "Click an option to start new game.";
+    resultsContainer.textContent = "Click to start new game.";
     endGameResults.textContent = "";
-}
+} 
