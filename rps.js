@@ -3,27 +3,27 @@ let userCount = 0;
 let compCount = 0;
 let tieCount = 0;
 
-let computerChoice = getComputerChoice();
-let userChoice;
+//let computerChoice = getComputerChoice();
+//let userChoice;
 
-let rounds = 10;
+let rounds = 5;
 
 /* USER BUTTONS + ELEMENTS ON PAGE */
 const title = document.createElement('h2');
 title.textContent = "Click Rock, Paper, or Scissors to play!";
-title.style.cssText = "color: hotpink; font-size: 30px;";
+title.setAttribute("class", "titleStyle");
 
 const rock = document.createElement('button');
 rock.textContent = "ROCK";
-rock.setAttribute("style", "padding: 10px; margin: 10px; background-color: pink; border: 3px solid hotpink; border-radius: 10px");
+rock.setAttribute("class", "buttonStyle");
 
 const paper = document.createElement('button');
 paper.textContent = "PAPER";
-paper.setAttribute("style", "padding: 10px; margin: 10px; background-color: pink; border: 3px solid hotpink; border-radius: 10px");
+paper.setAttribute("class", "buttonStyle");
 
 const scissors = document.createElement('button');
 scissors.textContent = "SCISSORS";
-scissors.setAttribute("style", "padding: 10px; margin: 10px; background-color: pink; border: 3px solid hotpink; border-radius: 10px");
+scissors.setAttribute("class", "buttonStyle");
 
 const buttonContainer = document.querySelector('#choices');
 buttonContainer.appendChild(title);
@@ -33,19 +33,18 @@ buttonContainer.appendChild(scissors);
 
 newGamebtn = document.querySelector("#new-game");
 newGamebtn.textContent = "NEW GAME";
-newGamebtn.setAttribute("style", "padding: 10px; margin: 10px; background-color: pink; border: 3px solid hotpink; border-radius: 10px");
+newGamebtn.setAttribute("class", "buttonStyle");
 
 const resultsContainer = document.querySelector('#results');
 const playRoundResults = document.createElement('div');
 const endGameResults = document.createElement('div');
-
 
 /* RPS BUTTON EVENT LISTENERS */
 newGamebtn.addEventListener("click", newGame);
 
 rock.addEventListener("click", () => {
     if(userCount < rounds && compCount < rounds) {
-        playRound(userChoice = "rock", computerChoice);
+        playRound(userChoice = "rock", getComputerChoice());
     }
     if (userCount == rounds || compCount == rounds) {
         if (userCount > compCount) {
@@ -63,7 +62,7 @@ rock.addEventListener("click", () => {
 
 paper.addEventListener("click", () => {
     if(userCount < rounds && compCount < rounds) {
-        playRound(userChoice = "paper", computerChoice);
+        playRound(userChoice = "paper", getComputerChoice());
     }
     if (userCount == rounds || compCount == rounds) {
         if (userCount > compCount) {
@@ -81,7 +80,7 @@ paper.addEventListener("click", () => {
 
 scissors.addEventListener("click", () => {
     if(userCount < rounds && compCount < rounds) {
-        playRound(userChoice = "scissors", computerChoice);
+        playRound(userChoice = "scissors", getComputerChoice());
     }
     if (userCount == rounds || compCount == rounds) {
         if (userCount > compCount) {

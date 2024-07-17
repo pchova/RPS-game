@@ -1,0 +1,15 @@
+
+
+/* CLASSES */
+.titleStyle {
+    color: hotpink; 
+    font-size: 30px;
+}
+
+.buttonStyle {
+    padding: 10px; 
+    margin: 10px; 
+    background-color: pink; 
+    border: 3px solid hotpink; 
+    border-radius: 10px
+}
