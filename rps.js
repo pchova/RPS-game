@@ -10,6 +10,10 @@ const title = document.createElement('h2');
 title.textContent = "Click Rock, Paper, or Scissors to play!";
 title.setAttribute("class", "titleStyle");
 
+const rules = document.createElement('p');
+rules.textContent = "Whoever wins " + rounds + " rounds first wins the game. Click new game above to play again.";
+rules.setAttribute("class", "rulesStyle");
+
 const rock = document.createElement('button');
 rock.textContent = "ROCK";
 rock.setAttribute("class", "buttonStyle");
@@ -24,14 +28,17 @@ scissors.setAttribute("class", "buttonStyle");
 
 const buttonContainer = document.querySelector('.choices');
 const titleContainer = document.querySelector('#title');
+const rulesContainer = document.querySelector('#rules');
 const bContainer = document.querySelector('#buttons');
 
 titleContainer.appendChild(title);
+rulesContainer.appendChild(rules);
 bContainer.appendChild(rock);
 bContainer.appendChild(paper);
 bContainer.appendChild(scissors);
 
 buttonContainer.appendChild(titleContainer);
+buttonContainer.appendChild(rulesContainer);
 buttonContainer.appendChild(bContainer);
 
 newGamebtn = document.querySelector("#new-game");
@@ -39,11 +46,16 @@ newGamebtn.textContent = "NEW GAME";
 newGamebtn.setAttribute("class", "buttonStyle");
 
 const resultsContainer = document.querySelector('#results');
+resultsContainer.setAttribute("class", "resultsText");
+
+const winnerResults = document.createElement('div');
+winnerResults.setAttribute("class", "resultsText");
 
 const playRoundResults = document.createElement('div');
+playRoundResults.setAttribute("class", "resultsText");
+
 const endGameResults = document.createElement('div');
-const winnerResults = document.createElement('div');
-const newGameText = document.createElement('div');
+endGameResults.setAttribute("class", "endGameText");
 
 /* RPS BUTTON EVENT LISTENERS */
 newGamebtn.addEventListener("click", newGame);
@@ -113,7 +125,7 @@ function getComputerChoice() {
 
 function playRound(userChoice, computerChoice) {
     resultsContainer.textContent = "";
-    
+
     let user = userChoice;
     let computer = computerChoice;
 
