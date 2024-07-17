@@ -3,9 +3,6 @@ let userCount = 0;
 let compCount = 0;
 let tieCount = 0;
 
-//let computerChoice = getComputerChoice();
-//let userChoice;
-
 let rounds = 5;
 
 /* USER BUTTONS + ELEMENTS ON PAGE */
@@ -25,19 +22,28 @@ const scissors = document.createElement('button');
 scissors.textContent = "SCISSORS";
 scissors.setAttribute("class", "buttonStyle");
 
-const buttonContainer = document.querySelector('#choices');
-buttonContainer.appendChild(title);
-buttonContainer.appendChild(rock);
-buttonContainer.appendChild(paper);
-buttonContainer.appendChild(scissors);
+const buttonContainer = document.querySelector('.choices');
+const titleContainer = document.querySelector('#title');
+const bContainer = document.querySelector('#buttons');
+
+titleContainer.appendChild(title);
+bContainer.appendChild(rock);
+bContainer.appendChild(paper);
+bContainer.appendChild(scissors);
+
+buttonContainer.appendChild(titleContainer);
+buttonContainer.appendChild(bContainer);
 
 newGamebtn = document.querySelector("#new-game");
 newGamebtn.textContent = "NEW GAME";
 newGamebtn.setAttribute("class", "buttonStyle");
 
 const resultsContainer = document.querySelector('#results');
+
 const playRoundResults = document.createElement('div');
 const endGameResults = document.createElement('div');
+const winnerResults = document.createElement('div');
+const newGameText = document.createElement('div');
 
 /* RPS BUTTON EVENT LISTENERS */
 newGamebtn.addEventListener("click", newGame);
@@ -106,67 +112,68 @@ function getComputerChoice() {
 }
 
 function playRound(userChoice, computerChoice) {
-
+    resultsContainer.textContent = "";
+    
     let user = userChoice;
     let computer = computerChoice;
 
     if (user == 'rock') {
         if (computer == 'paper') {
             compCount++;
-            resultsContainer.textContent = 'Computer wins. ';
-            playRoundResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
-            compCount + ', Tie: ' + tieCount;
+            winnerResults.textContent = 'Computer wins. ';
+            playRoundResults.textContent = 'User Count: ' + userCount + ' Computer Count: ' +
+            compCount + ' Tie: ' + tieCount;
         }else if (computer == 'scissors') {
             userCount++;
-            resultsContainer.textContent = 'User wins.';
-            playRoundResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
-            compCount + ', Tie: ' + tieCount;
+            winnerResults.textContent = 'User wins.';
+            playRoundResults.textContent = 'User Count: ' + userCount + ' Computer Count: ' +
+            compCount + ' Tie: ' + tieCount;
         }else {
             tieCount++;
-            resultsContainer.textContent = 'Tie!';
-            playRoundResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
-            compCount + ', Tie: ' + tieCount;
+            winnerResults.textContent = 'Tie!';
+            playRoundResults.textContent = 'User Count: ' + userCount + ' Computer Count: ' +
+            compCount + ' Tie: ' + tieCount;
         }
     }
     
     if (user == 'paper') {
         if (computer == 'rock') {
             userCount++;
-            resultsContainer.textContent = 'User wins.';
-            playRoundResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
-            compCount + ', Tie: ' + tieCount;
+            winnerResults.textContent = 'User wins.';
+            playRoundResults.textContent = 'User Count: ' + userCount + ' Computer Count: ' +
+            compCount + ' Tie: ' + tieCount;
         }else if (computer == 'scissors') {
             compCount++;
-            resultsContainer.textContent = 'Computer wins.';
-            playRoundResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
-            compCount + ', Tie: ' + tieCount;
+            winnerResults.textContent = 'Computer wins.';
+            playRoundResults.textContent = 'User Count: ' + userCount + ' Computer Count: ' +
+            compCount + ' Tie: ' + tieCount;
         }else {
             tieCount++;
-            resultsContainer.textContent = 'Tie!';
-            playRoundResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
-            compCount + ', Tie: ' + tieCount;
+            winnerResults.textContent = 'Tie!';
+            playRoundResults.textContent = 'User Count: ' + userCount + ' Computer Count: ' +
+            compCount + ' Tie: ' + tieCount;
         }
     }
     
     if (user == 'scissors') {
         if (computer == 'rock') {
             compCount++;
-            resultsContainer.textContent = 'Computer wins.';
-            playRoundResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
-            compCount + ', Tie: ' + tieCount;
+            winnerResults.textContent = 'Computer wins.';
+            playRoundResults.textContent = 'User Count: ' + userCount + ' Computer Count: ' +
+            compCount + ' Tie: ' + tieCount;
         }else if (computer == 'paper') {
             userCount++;
-            resultsContainer.textContent = 'User wins.';
-            playRoundResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
-            compCount + ', Tie: ' + tieCount;
+            winnerResults.textContent = 'User wins.';
+            playRoundResults.textContent = 'User Count: ' + userCount + ' Computer Count: ' +
+            compCount + ' Tie: ' + tieCount;
         }else {
             tieCount++;
-            resultsContainer.textContent = 'Tie!';
-            playRoundResults.textContent = 'User Count: ' + userCount + ', Computer Count: ' +
-            compCount + ', Tie: ' + tieCount;
+            winnerResults.textContent = 'Tie!';
+            playRoundResults.textContent = 'User Count: ' + userCount + ' Computer Count: ' +
+            compCount + ' Tie: ' + tieCount;
         }
     }
-
+    resultsContainer.appendChild(winnerResults);
     resultsContainer.appendChild(playRoundResults);
 }
 

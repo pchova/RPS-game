@@ -1,4 +1,26 @@
+html {
+    box-sizing: border-box;
+}
 
+body {
+    background-color: palegoldenrod;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+img {
+    max-width: 30%;
+    border-radius: 10px 20px;
+    border: 4px solid hotpink;
+}
+
+button:hover {
+    background-color: palevioletred;
+    border: 3px solid olivedrab;
+    cursor: pointer;
+}
 
 /* CLASSES */
 .titleStyle {
@@ -12,4 +34,38 @@
     background-color: pink; 
     border: 3px solid hotpink; 
     border-radius: 10px
+}
+
+.choices {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* IDs */
+
+#new-game {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#results {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
